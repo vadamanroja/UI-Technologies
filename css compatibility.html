@@ -1,0 +1,566 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced CSS Practical Demonstration</title>
+
+    <style>
+        /* 1. Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 1.6;
+            color: #263238;
+            background-color: #f4f7fb;
+        }
+
+        header {
+            background: #102a43;
+            color: white;
+            padding: 22px 5%;
+            text-align: center;
+        }
+
+        nav {
+            background: #243b53;
+            padding: 12px;
+            text-align: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: #64ffda;
+        }
+
+        section {
+            width: 90%;
+            max-width: 1150px;
+            margin: 35px auto;
+            padding: 25px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px #00000012;
+        }
+
+        h2 {
+            color: #1565c0;
+            margin-bottom: 18px;
+        }
+
+        /* 2. Table Layout: Fixed and Auto (None) */
+        .table-container {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 25px;
+        }
+
+        th, td {
+            border: 1px solid #b0bec5;
+            padding: 12px;
+            text-align: left;
+            overflow-wrap: anywhere;
+        }
+
+        th {
+            background: #1565c0;
+            color: white;
+        }
+
+        /* Fixed table layout */
+        .fixed-table {
+            table-layout: fixed;
+        }
+
+        /* Auto is the default layout; "none" is not a valid
+           value for the CSS table-layout property. */
+        .auto-table {
+            table-layout: auto;
+        }
+
+        /* 3. List Style Types */
+        .list-demo {
+            padding-left: 35px;
+            margin-bottom: 20px;
+        }
+
+        .list-demo li {
+            padding: 5px;
+        }
+
+        .disc-list {
+            list-style-type: disc;
+        }
+
+        .circle-list {
+            list-style-type: circle;
+        }
+
+        .square-list {
+            list-style-type: square;
+        }
+
+        .decimal-list {
+            list-style-type: decimal;
+        }
+
+        .roman-list {
+            list-style-type: upper-roman;
+        }
+
+        .alpha-list {
+            list-style-type: lower-alpha;
+        }
+
+        /* 4. Different CSS Grid Types */
+        .grid {
+            display: grid;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .grid-item {
+            background: linear-gradient(135deg, #1976d2, #512da8);
+            color: white;
+            padding: 25px 15px;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        /* Equal-column grid */
+        .equal-grid {
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        /* Responsive grid using auto-fit */
+        .responsive-grid {
+            grid-template-columns:
+                repeat(auto-fit, minmax(180px, 1fr));
+        }
+
+        /* Unequal-column grid */
+        .unequal-grid {
+            grid-template-columns: 2fr 1fr 1fr;
+        }
+
+        /* Grid with named layout areas */
+        .area-grid {
+            grid-template-columns: 2fr 1fr;
+            grid-template-areas:
+                "main sidebar"
+                "footer footer";
+        }
+
+        .main-area {
+            grid-area: main;
+        }
+
+        .sidebar-area {
+            grid-area: sidebar;
+        }
+
+        .footer-area {
+            grid-area: footer;
+        }
+
+        /* 5. Hero Image */
+        .hero {
+            min-height: 400px;
+            background-image:
+                linear-gradient(
+                    rgba(0, 0, 0, 0.55),
+                    rgba(0, 0, 0, 0.55)
+                ),
+                url("https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1600&q=80");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding: 30px;
+            border-radius: 10px;
+        }
+
+        .hero h2 {
+            color: white;
+            font-size: clamp(28px, 5vw, 48px);
+        }
+
+        .hero p {
+            font-size: clamp(15px, 2vw, 20px);
+            margin: 15px 0 25px;
+        }
+
+        .hero a {
+            display: inline-block;
+            padding: 12px 25px;
+            background: #64ffda;
+            color: #102a43;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: bold;
+        }
+
+        /* 6. Responsive Image */
+        .responsive-image {
+            width: 100%;
+            max-width: 750px;
+            height: auto;
+            display: block;
+            margin: 15px auto;
+            border-radius: 10px;
+        }
+
+        /* 7. Responsive Video */
+        .video-container {
+            width: 100%;
+            max-width: 800px;
+            margin: auto;
+            aspect-ratio: 16 / 9;
+        }
+
+        .video-container video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        footer {
+            background: #102a43;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 35px;
+        }
+
+        /* 8. Media Queries */
+        /* Tablets */
+        @media screen and (max-width: 768px) {
+            section {
+                width: 94%;
+                padding: 18px;
+            }
+
+            .equal-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .unequal-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .area-grid {
+                grid-template-columns: 1fr;
+                grid-template-areas:
+                    "main"
+                    "sidebar"
+                    "footer";
+            }
+
+            nav a {
+                display: inline-block;
+                margin: 5px 8px;
+            }
+
+            .hero {
+                min-height: 320px;
+            }
+        }
+
+        /* Mobile phones */
+        @media screen and (max-width: 480px) {
+            header h1 {
+                font-size: 24px;
+            }
+
+            section {
+                padding: 15px;
+                margin: 20px auto;
+            }
+
+            .equal-grid,
+            .unequal-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero {
+                min-height: 260px;
+                padding: 18px;
+            }
+
+            th, td {
+                padding: 8px;
+                font-size: 13px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Advanced CSS Practical Lab</h1>
+        <p>Tables | Lists | CSS Grid | Hero Image | Responsive Design</p>
+    </header>
+
+    <nav>
+        <a href="#tables">Tables</a>
+        <a href="#lists">Lists</a>
+        <a href="#grids">Grid</a>
+        <a href="#hero">Hero Image</a>
+        <a href="#media">Media</a>
+    </nav>
+
+    <!-- Practical 1: Table Layout -->
+    <section id="tables">
+        <h2>1. CSS Table Layout: Fixed and Auto</h2>
+
+        <h3>Fixed Table Layout</h3>
+        <p>
+            The fixed layout distributes column widths without relying
+            on the full contents of every cell.
+        </p>
+
+        <div class="table-container">
+            <table class="fixed-table">
+                <tr>
+                    <th>Student Name</th>
+                    <th>Course</th>
+                    <th>Remarks</th>
+                </tr>
+                <tr>
+                    <td>Rahul Sharma</td>
+                    <td>Computer Science</td>
+                    <td>Excellent performance in web development</td>
+                </tr>
+                <tr>
+                    <td>Priya Reddy</td>
+                    <td>Information Technology</td>
+                    <td>Good performance in CSS practicals</td>
+                </tr>
+            </table>
+        </div>
+
+        <h3>Automatic Table Layout</h3>
+        <p>
+            The auto layout adjusts column widths based on cell content.
+        </p>
+
+        <div class="table-container">
+            <table class="auto-table">
+                <tr>
+                    <th>Product</th>
+                    <th>Description</th>
+                    <th>Price</th>
+                </tr>
+                <tr>
+                    <td>Laptop</td>
+                    <td>High-performance laptop for software development</td>
+                    <td>₹55,000</td>
+                </tr>
+                <tr>
+                    <td>Keyboard</td>
+                    <td>Wireless keyboard</td>
+                    <td>₹1,500</td>
+                </tr>
+            </table>
+        </div>
+    </section>
+
+    <!-- Practical 2: List Style Types -->
+    <section id="lists">
+        <h2>2. CSS List Style Types</h2>
+
+        <div class="grid equal-grid">
+            <div>
+                <h3>Disc List</h3>
+                <ul class="list-demo disc-list">
+                    <li>HTML</li>
+                    <li>CSS</li>
+                    <li>JavaScript</li>
+                </ul>
+            </div>
+
+            <div>
+                <h3>Circle List</h3>
+                <ul class="list-demo circle-list">
+                    <li>React</li>
+                    <li>Angular</li>
+                    <li>Vue</li>
+                </ul>
+            </div>
+
+            <div>
+                <h3>Square List</h3>
+                <ul class="list-demo square-list">
+                    <li>Python</li>
+                    <li>Java</li>
+                    <li>C++</li>
+                </ul>
+            </div>
+
+            <div>
+                <h3>Decimal List</h3>
+                <ol class="list-demo decimal-list">
+                    <li>Planning</li>
+                    <li>Design</li>
+                    <li>Development</li>
+                </ol>
+            </div>
+
+            <div>
+                <h3>Roman List</h3>
+                <ol class="list-demo roman-list">
+                    <li>Introduction</li>
+                    <li>Methodology</li>
+                    <li>Conclusion</li>
+                </ol>
+            </div>
+
+            <div>
+                <h3>Alphabetic List</h3>
+                <ol class="list-demo alpha-list">
+                    <li>Frontend</li>
+                    <li>Backend</li>
+                    <li>Database</li>
+                </ol>
+            </div>
+        </div>
+    </section>
+
+    <!-- Practical 3: Different Grid Types -->
+    <section id="grids">
+        <h2>3. Different Types of CSS Grid</h2>
+
+        <h3>Grid A: Equal Columns</h3>
+        <div class="grid equal-grid">
+            <div class="grid-item">Column 1</div>
+            <div class="grid-item">Column 2</div>
+            <div class="grid-item">Column 3</div>
+        </div>
+
+        <h3>Grid B: Responsive Auto-Fit</h3>
+        <div class="grid responsive-grid">
+            <div class="grid-item">HTML</div>
+            <div class="grid-item">CSS</div>
+            <div class="grid-item">JavaScript</div>
+            <div class="grid-item">React</div>
+        </div>
+
+        <h3>Grid C: Unequal Columns</h3>
+        <div class="grid unequal-grid">
+            <div class="grid-item">2 Fraction Units</div>
+            <div class="grid-item">1 Fraction Unit</div>
+            <div class="grid-item">1 Fraction Unit</div>
+        </div>
+
+        <h3>Grid D: Named Grid Areas</h3>
+        <div class="grid area-grid">
+            <div class="grid-item main-area">Main Content</div>
+            <div class="grid-item sidebar-area">Sidebar</div>
+            <div class="grid-item footer-area">Grid Footer</div>
+        </div>
+    </section>
+
+    <!-- Practical 4: Hero Image -->
+    <section id="hero">
+        <h2>4. Professional Hero Image</h2>
+
+        <div class="hero">
+            <div>
+                <h2>Build Your Digital Future</h2>
+                <p>
+                    Learn modern web technologies and create
+                    responsive, user-friendly websites.
+                </p>
+                <a href="#media">Explore More</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Practical 5: Viewport, Image, Video and Media Queries -->
+    <section id="media">
+        <h2>5. Viewport and Responsive Media</h2>
+
+        <h3>Responsive Image</h3>
+        <p>
+            The image automatically adjusts to its container.
+            Its original aspect ratio is preserved.
+        </p>
+
+        <img
+            class="responsive-image"
+            src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1200&q=80"
+            alt="Laptop displaying a web development workspace"
+            loading="lazy"
+        >
+
+        <h3>Responsive Video</h3>
+        <p>
+            The video maintains a 16:9 aspect ratio and fits
+            the available screen width.
+        </p>
+
+        <div class="video-container">
+            <video controls preload="metadata"
+                   poster="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1000&q=80">
+                <source
+                    src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
+                    type="video/mp4"
+                >
+                Your browser does not support HTML5 video.
+            </video>
+        </div>
+
+        <h3>Viewport and Media Query Information</h3>
+        <ul class="list-demo disc-list">
+            <li>
+                <strong>Viewport:</strong>
+                The meta viewport tag sets the page width to the device width.
+            </li>
+            <li>
+                <strong>Grid:</strong>
+                Auto-fit and minmax create responsive grid columns.
+            </li>
+            <li>
+                <strong>Media Queries:</strong>
+                The layout changes at 768px and 480px.
+            </li>
+            <li>
+                <strong>Images:</strong>
+                Width 100% and height auto preserve image proportions.
+            </li>
+            <li>
+                <strong>Video:</strong>
+                Width 100% and aspect-ratio 16/9 provide responsive sizing.
+            </li>
+        </ul>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Advanced CSS Practical Lab. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,495 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Practical Programs</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f1f5f9;
+            color: #1e293b;
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, #1d4ed8, #7c3aed);
+            color: white;
+            text-align: center;
+            padding: 35px 15px;
+        }
+
+        header h1 {
+            margin-bottom: 8px;
+            font-size: 30px;
+        }
+
+        header p {
+            color: #e0e7ff;
+        }
+
+        main {
+            max-width: 1000px;
+            margin: 30px auto;
+            padding: 0 18px;
+        }
+
+        .card {
+            background: white;
+            margin-bottom: 24px;
+            padding: 25px;
+            border-radius: 14px;
+            box-shadow: 0 4px 15px rgba(15, 23, 42, 0.08);
+            border: 1px solid #e2e8f0;
+        }
+
+        .card h2 {
+            color: #1d4ed8;
+            margin-bottom: 12px;
+            font-size: 21px;
+        }
+
+        .description {
+            color: #64748b;
+            margin-bottom: 18px;
+        }
+
+        button {
+            background: #2563eb;
+            color: white;
+            border: none;
+            padding: 11px 18px;
+            border-radius: 7px;
+            cursor: pointer;
+            font-size: 15px;
+            margin: 5px 5px 5px 0;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: #1e40af;
+            transform: translateY(-2px);
+        }
+
+        .secondary {
+            background: #475569;
+        }
+
+        .secondary:hover {
+            background: #334155;
+        }
+
+        input {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0 14px;
+            border: 1px solid #cbd5e1;
+            border-radius: 7px;
+            font-size: 15px;
+        }
+
+        input:focus {
+            outline: 2px solid #93c5fd;
+            border-color: #2563eb;
+        }
+
+        .output {
+            margin-top: 15px;
+            padding: 14px;
+            background: #eff6ff;
+            border-left: 4px solid #2563eb;
+            border-radius: 6px;
+            overflow-wrap: anywhere;
+            min-height: 45px;
+        }
+
+        .success {
+            background: #f0fdf4;
+            border-left-color: #16a34a;
+        }
+
+        .error {
+            background: #fef2f2;
+            border-left-color: #dc2626;
+        }
+
+        .hint {
+            font-size: 13px;
+            color: #64748b;
+        }
+
+        footer {
+            background: #0f172a;
+            color: #cbd5e1;
+            text-align: center;
+            padding: 20px;
+            margin-top: 35px;
+        }
+
+        @media (max-width: 600px) {
+            header h1 {
+                font-size: 24px;
+            }
+
+            .card {
+                padding: 18px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>JavaScript Practical Programs</h1>
+    <p>Event Listeners | Form Validation | Debugging | Cookies | JSON</p>
+</header>
+
+<main>
+
+    <!-- 1. Event Listener: Date and Time -->
+    <section class="card">
+        <h2>1. Display Current Date and Time</h2>
+        <p class="description">
+            Uses addEventListener() to display the current date and time
+            when the button is clicked.
+        </p>
+
+        <button id="dateButton">Display Date & Time</button>
+        <div class="output" id="dateOutput" aria-live="polite">
+            Click the button to view the current date and time.
+        </div>
+    </section>
+
+    <!-- 2. JavaScript Form Validation -->
+    <section class="card">
+        <h2>2. JavaScript Form Validation</h2>
+        <p class="description">
+            The form cannot be submitted with an empty name field.
+        </p>
+
+        <form id="nameForm" novalidate>
+            <label for="userName">Enter Your Name:</label>
+            <input
+                type="text"
+                id="userName"
+                placeholder="Enter your full name"
+                autocomplete="name"
+            >
+
+            <button type="submit">Submit</button>
+            <button type="reset" class="secondary">Reset</button>
+        </form>
+
+        <div class="output" id="formOutput" aria-live="polite">
+            Your validation result will appear here.
+        </div>
+    </section>
+
+    <!-- 3. Console Debugging -->
+    <section class="card">
+        <h2>3. Debugging Using console.log()</h2>
+        <p class="description">
+            Open browser Developer Tools (F12), select Console,
+            and click the button to inspect the debugging messages.
+        </p>
+
+        <button id="debugButton">Run Debugging Example</button>
+        <div class="output" id="debugOutput">
+            Debugging has not started.
+        </div>
+    </section>
+
+    <!-- 4. Cookies -->
+    <section class="card">
+        <h2>4. Set, Get and Check Cookies</h2>
+        <p class="description">
+            Demonstrates three cookie functions using the browser's
+            document.cookie API.
+        </p>
+
+        <label for="cookieValue">Enter a cookie value:</label>
+        <input
+            type="text"
+            id="cookieValue"
+            placeholder="Example: JavaScript Learner"
+        >
+
+        <button id="setCookieButton">Set Cookie</button>
+        <button id="getCookieButton">Get Cookie</button>
+        <button id="checkCookieButton">Check Cookie</button>
+
+        <div class="output" id="cookieOutput" aria-live="polite">
+            Cookie operation results will appear here.
+        </div>
+
+        <p class="hint">
+            Cookies may require localhost or HTTPS to work reliably.
+            Browser settings can also restrict cookies.
+        </p>
+    </section>
+
+    <!-- 5. JSON Object -->
+    <section class="card">
+        <h2>5. Create and Access a JSON Object</h2>
+        <p class="description">
+            Creates a JavaScript object using JSON-compatible data
+            and accesses its properties using dot notation.
+        </p>
+
+        <button id="jsonButton">Display JSON Properties</button>
+        <div class="output" id="jsonOutput">
+            Click the button to display the object properties.
+        </div>
+    </section>
+
+</main>
+
+<footer>
+    <p>&copy; 2026 JavaScript Practical Lab | All Rights Reserved</p>
+</footer>
+
+<script>
+    "use strict";
+
+    // ==========================================
+    // 1. EVENT LISTENER: DISPLAY DATE AND TIME
+    // ==========================================
+
+    const dateButton = document.getElementById("dateButton");
+
+    dateButton.addEventListener("click", function () {
+        const currentDate = new Date();
+
+        document.getElementById("dateOutput").textContent =
+            currentDate.toLocaleString();
+
+        console.log("Current date and time:", currentDate);
+    });
+
+
+    // ==========================================
+    // 2. JAVASCRIPT FORM VALIDATION
+    // ==========================================
+
+    const nameForm = document.getElementById("nameForm");
+
+    nameForm.addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        const nameInput = document.getElementById("userName");
+        const formOutput = document.getElementById("formOutput");
+        const name = nameInput.value.trim();
+
+        if (name === "") {
+            formOutput.textContent = "Error: Name field cannot be empty!";
+            formOutput.className = "output error";
+
+            nameInput.focus();
+
+            console.log("Validation failed: Name is empty.");
+        } else {
+            formOutput.textContent =
+                "Success! Welcome, " + name + ".";
+
+            formOutput.className = "output success";
+
+            console.log("Validation successful. Name:", name);
+        }
+    });
+
+    nameForm.addEventListener("reset", function () {
+        const formOutput = document.getElementById("formOutput");
+
+        formOutput.textContent = "Your validation result will appear here.";
+        formOutput.className = "output";
+    });
+
+
+    // ==========================================
+    // 3. DEBUGGING USING console.log()
+    // ==========================================
+
+    document.getElementById("debugButton")
+        .addEventListener("click", function () {
+
+            const number1 = 20;
+            const number2 = 10;
+            const sum = number1 + number2;
+
+            // Display variable values in the browser console.
+            console.log("Debugging started...");
+            console.log("Number 1:", number1);
+            console.log("Number 2:", number2);
+            console.log("Calculated sum:", sum);
+
+            // Display an object in the console.
+            console.log("Debug information:", {
+                firstNumber: number1,
+                secondNumber: number2,
+                result: sum
+            });
+
+            document.getElementById("debugOutput").textContent =
+                "Debugging complete! Result: " + sum +
+                ". Open the browser console (F12) to view the logs.";
+        });
+
+
+    // ==========================================
+    // 4. SET, GET AND CHECK COOKIES
+    // ==========================================
+
+    // Function to set a cookie.
+    function setCookie(name, value, days) {
+        const expiryDate = new Date();
+
+        expiryDate.setTime(
+            expiryDate.getTime() + days * 24 * 60 * 60 * 1000
+        );
+
+        document.cookie =
+            encodeURIComponent(name) + "=" +
+            encodeURIComponent(value) +
+            "; expires=" + expiryDate.toUTCString() +
+            "; path=/; SameSite=Lax";
+    }
+
+    // Function to get a cookie by name.
+    function getCookie(name) {
+        const prefix = encodeURIComponent(name) + "=";
+        const cookies = document.cookie.split(";");
+
+        for (let cookie of cookies) {
+            cookie = cookie.trim();
+
+            if (cookie.startsWith(prefix)) {
+                return decodeURIComponent(
+                    cookie.substring(prefix.length)
+                );
+            }
+        }
+
+        return null;
+    }
+
+    // Function to check whether a cookie exists.
+    function checkCookie(name) {
+        return getCookie(name) !== null;
+    }
+
+    const cookieOutput = document.getElementById("cookieOutput");
+
+    document.getElementById("setCookieButton")
+        .addEventListener("click", function () {
+
+            const value =
+                document.getElementById("cookieValue").value.trim();
+
+            if (value === "") {
+                cookieOutput.textContent =
+                    "Please enter a value before setting the cookie.";
+
+                cookieOutput.className = "output error";
+                return;
+            }
+
+            setCookie("studentName", value, 7);
+
+            cookieOutput.textContent =
+                "Cookie set successfully for 7 days.";
+
+            cookieOutput.className = "output success";
+
+            console.log("Cookie has been set.");
+        });
+
+    document.getElementById("getCookieButton")
+        .addEventListener("click", function () {
+
+            const value = getCookie("studentName");
+
+            if (value !== null) {
+                cookieOutput.textContent =
+                    "Cookie value: " + value;
+
+                cookieOutput.className = "output success";
+            } else {
+                cookieOutput.textContent =
+                    "Cookie not found.";
+
+                cookieOutput.className = "output error";
+            }
+
+            console.log("Retrieved cookie:", value);
+        });
+
+    document.getElementById("checkCookieButton")
+        .addEventListener("click", function () {
+
+            if (checkCookie("studentName")) {
+                cookieOutput.textContent =
+                    "The studentName cookie exists.";
+
+                cookieOutput.className = "output success";
+            } else {
+                cookieOutput.textContent =
+                    "The studentName cookie does not exist.";
+
+                cookieOutput.className = "output error";
+            }
+
+            console.log(
+                "Does the cookie exist?",
+                checkCookie("studentName")
+            );
+        });
+
+
+    // ==========================================
+    // 5. JSON OBJECT AND DOT NOTATION
+    // ==========================================
+
+    // Create a JSON-compatible JavaScript object.
+    const student = {
+        name: "Vadaman Roja",
+        age: 21,
+        course: "Computer Science",
+        college: "VMTW",
+        skills: ["HTML", "CSS", "JavaScript"]
+    };
+
+    document.getElementById("jsonButton")
+        .addEventListener("click", function () {
+
+            // Access properties using dot notation.
+            const name = student.name;
+            const age = student.age;
+            const course = student.course;
+            const college = student.college;
+            const skills = student.skills.join(", ");
+
+            document.getElementById("jsonOutput").textContent =
+                "Name: " + name +
+                " | Age: " + age +
+                " | Course: " + course +
+                " | College: " + college +
+                " | Skills: " + skills;
+
+            console.log("Student object:", student);
+            console.log("Student name:", student.name);
+            console.log("Student course:", student.course);
+        });
+</script>
+
+</body>
+</html>

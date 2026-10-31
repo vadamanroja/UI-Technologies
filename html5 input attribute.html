@@ -1,0 +1,535 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Elements | Professional Webpage</title>
+
+    <style>
+        /* General page styling */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f1f5f9;
+            color: #1e293b;
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, #0f172a, #2563eb);
+            color: white;
+            text-align: center;
+            padding: 30px 15px;
+        }
+
+        header h1 {
+            font-size: 32px;
+            margin-bottom: 8px;
+        }
+
+        nav {
+            background: #172554;
+            padding: 14px;
+            text-align: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 12px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: #93c5fd;
+        }
+
+        .announcement {
+            background: #dbeafe;
+            color: #1d4ed8;
+            padding: 10px;
+            font-weight: bold;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 0 18px;
+        }
+
+        .card {
+            background: white;
+            padding: 25px;
+            margin-bottom: 25px;
+            border-radius: 14px;
+            box-shadow: 0 5px 20px rgba(15, 23, 42, 0.07);
+        }
+
+        h2 {
+            color: #1d4ed8;
+            margin-bottom: 18px;
+            border-bottom: 2px solid #dbeafe;
+            padding-bottom: 10px;
+        }
+
+        h3 {
+            margin: 18px 0 10px;
+            color: #334155;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 18px;
+        }
+
+        .field {
+            display: flex;
+            flex-direction: column;
+            gap: 7px;
+        }
+
+        label {
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 11px;
+            border: 1px solid #cbd5e1;
+            border-radius: 7px;
+            font-size: 15px;
+            background: #fff;
+        }
+
+        input:focus, textarea:focus, select:focus {
+            outline: 2px solid #93c5fd;
+            border-color: #2563eb;
+        }
+
+        input[type="radio"],
+        input[type="checkbox"] {
+            width: auto;
+            margin-right: 7px;
+        }
+
+        input[type="range"],
+        input[type="color"] {
+            padding: 3px;
+        }
+
+        .options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 18px;
+            margin: 10px 0;
+        }
+
+        .options label {
+            font-weight: normal;
+        }
+
+        .full-width {
+            grid-column: 1 / -1;
+        }
+
+        .buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        button, input[type="submit"], input[type="reset"] {
+            width: auto;
+            border: none;
+            border-radius: 7px;
+            padding: 12px 20px;
+            background: #2563eb;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover, input[type="submit"]:hover {
+            background: #1d4ed8;
+        }
+
+        input[type="reset"] {
+            background: #64748b;
+        }
+
+        .demo-button {
+            background: #059669;
+        }
+
+        .note {
+            background: #eff6ff;
+            border-left: 4px solid #2563eb;
+            padding: 12px;
+            margin-top: 15px;
+            border-radius: 5px;
+        }
+
+        iframe {
+            width: 100%;
+            height: 280px;
+            border: 2px solid #cbd5e1;
+            border-radius: 10px;
+        }
+
+        .target-links a {
+            display: inline-block;
+            margin: 8px 12px 8px 0;
+            color: #2563eb;
+            font-weight: bold;
+        }
+
+        footer {
+            text-align: center;
+            background: #0f172a;
+            color: white;
+            padding: 22px;
+            margin-top: 30px;
+        }
+
+        @media (max-width: 650px) {
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            header h1 {
+                font-size: 25px;
+            }
+
+            nav a {
+                display: inline-block;
+                margin: 5px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header id="top">
+        <h1>HTML Form Elements</h1>
+        <p>Learn HTML5 Inputs, Form Restrictions, Links, Iframes and Marquee</p>
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+        <a href="#basic">Basic Inputs</a>
+        <a href="#html5">HTML5 Inputs</a>
+        <a href="#restrictions">Restrictions</a>
+        <a href="#targets">Target & Iframe</a>
+    </nav>
+
+    <!-- Marquee demonstration -->
+    <div class="announcement">
+        <marquee behavior="scroll" direction="left" scrollamount="5">
+            Welcome to the HTML Form Elements Demonstration!
+            Explore input types, form validation, links, and embedded webpages.
+        </marquee>
+    </div>
+
+    <main class="container">
+
+        <!-- 1. Basic Input Types -->
+        <section class="card" id="basic">
+            <h2>1. Basic HTML Input Types</h2>
+
+            <form action="#" method="get">
+                <div class="form-grid">
+
+                    <div class="field">
+                        <label for="username">Text Input</label>
+                        <input type="text" id="username" name="username"
+                               placeholder="Enter your name">
+                    </div>
+
+                    <div class="field">
+                        <label for="password">Password Input</label>
+                        <input type="password" id="password" name="password"
+                               placeholder="Enter password">
+                    </div>
+
+                    <div class="field">
+                        <label for="gender">Radio Buttons</label>
+                        <div class="options">
+                            <label><input type="radio" name="gender" value="male"> Male</label>
+                            <label><input type="radio" name="gender" value="female"> Female</label>
+                            <label><input type="radio" name="gender" value="other"> Other</label>
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label>Checkboxes</label>
+                        <div class="options">
+                            <label><input type="checkbox" name="skills" value="html"> HTML</label>
+                            <label><input type="checkbox" name="skills" value="css"> CSS</label>
+                            <label><input type="checkbox" name="skills" value="js"> JavaScript</label>
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label for="message">Text Area</label>
+                        <textarea id="message" name="message" rows="3"
+                                  placeholder="Write a message"></textarea>
+                    </div>
+
+                    <div class="field">
+                        <label for="country">Select Country</label>
+                        <select id="country" name="country">
+                            <option value="">Choose a country</option>
+                            <option value="india">India</option>
+                            <option value="usa">United States</option>
+                            <option value="uk">United Kingdom</option>
+                        </select>
+                    </div>
+
+                </div>
+
+                <div class="buttons">
+                    <input type="submit" value="Submit Form">
+                    <input type="reset" value="Reset Form">
+
+                    <input type="button" value="Click Me"
+                           onclick="alert('Button clicked successfully!')">
+                </div>
+            </form>
+        </section>
+
+        <!-- 2. HTML5 Input Types -->
+        <section class="card" id="html5">
+            <h2>2. HTML5 Input Types</h2>
+
+            <form>
+                <div class="form-grid">
+
+                    <div class="field">
+                        <label for="quantity">Number</label>
+                        <input type="number" id="quantity" name="quantity"
+                               min="1" max="100" value="10">
+                    </div>
+
+                    <div class="field">
+                        <label for="rating">Range (Rating)</label>
+                        <input type="range" id="rating" name="rating"
+                               min="0" max="10" value="5"
+                               oninput="ratingValue.textContent = this.value">
+                        <span>Selected rating: <strong id="ratingValue">5</strong></span>
+                    </div>
+
+                    <div class="field">
+                        <label for="favcolor">Choose Color</label>
+                        <input type="color" id="favcolor" name="favcolor" value="#2563eb">
+                    </div>
+
+                    <div class="field">
+                        <label for="birthdate">Date</label>
+                        <input type="date" id="birthdate" name="birthdate">
+                    </div>
+
+                    <div class="field">
+                        <label for="document">Upload File</label>
+                        <input type="file" id="document" name="document">
+                    </div>
+
+                    <div class="field">
+                        <label for="meeting">Time</label>
+                        <input type="time" id="meeting" name="meeting">
+                    </div>
+
+                    <div class="field">
+                        <label for="month">Month</label>
+                        <input type="month" id="month" name="month">
+                    </div>
+
+                    <div class="field">
+                        <label for="week">Week</label>
+                        <input type="week" id="week" name="week">
+                    </div>
+
+                    <div class="field">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email"
+                               placeholder="example@email.com">
+                    </div>
+
+                </div>
+            </form>
+
+            <p class="note">
+                HTML5 inputs provide built-in controls for dates, times, numbers,
+                colors, email addresses, and file uploads.
+            </p>
+        </section>
+
+        <!-- 3. Input Restrictions -->
+        <section class="card" id="restrictions">
+            <h2>3. HTML Input Restrictions</h2>
+
+            <form action="#" method="get">
+                <div class="form-grid">
+
+                    <div class="field">
+                        <label for="requiredName">Required Field</label>
+                        <input type="text" id="requiredName" name="requiredName"
+                               required placeholder="This field is required">
+                    </div>
+
+                    <div class="field">
+                        <label for="maxLength">Maxlength (10 characters)</label>
+                        <input type="text" id="maxLength" name="maxLength"
+                               maxlength="10" placeholder="Maximum 10 characters">
+                    </div>
+
+                    <div class="field">
+                        <label for="minmax">Minimum 18, Maximum 60</label>
+                        <input type="number" id="minmax" name="age"
+                               min="18" max="60" value="25">
+                    </div>
+
+                    <div class="field">
+                        <label for="readonly">Readonly Input</label>
+                        <input type="text" id="readonly" name="readonly"
+                               value="This value cannot be edited" readonly>
+                    </div>
+
+                    <div class="field">
+                        <label for="disabled">Disabled Input</label>
+                        <input type="text" id="disabled" name="disabled"
+                               value="This field is disabled" disabled>
+                    </div>
+
+                    <div class="field">
+                        <label for="size">Size Attribute (20 characters wide)</label>
+                        <input type="text" id="size" name="size"
+                               size="20" placeholder="Enter text here">
+                    </div>
+
+                    <div class="field">
+                        <label for="defaultValue">Value Attribute</label>
+                        <input type="text" id="defaultValue" name="defaultValue"
+                               value="Default Value">
+                    </div>
+
+                    <div class="field">
+                        <label for="maxDate">Maximum Date</label>
+                        <input type="date" id="maxDate" name="maxDate"
+                               max="2027-12-31" min="2020-01-01">
+                    </div>
+
+                </div>
+
+                <div class="buttons">
+                    <input type="submit" value="Validate Restrictions">
+                    <input type="reset" value="Reset">
+                </div>
+            </form>
+
+            <p class="note">
+                <strong>Note:</strong> The disabled field is not submitted with the
+                form. Readonly fields cannot be edited but are submitted. The
+                required attribute prevents submission when its field is empty.
+                The min and max attributes restrict allowed values.
+            </p>
+        </section>
+
+        <!-- 4. Target Attribute -->
+        <section class="card" id="targets">
+            <h2>4. HTML Target Attribute</h2>
+
+            <p>The target attribute specifies where a linked page should open.</p>
+
+            <div class="target-links">
+                <p>
+                    <a href="https://www.google.com" target="_blank"
+                       rel="noopener noreferrer">Open Google in New Tab</a>
+                </p>
+
+                <p>
+                    <a href="https://www.wikipedia.org" target="_self">
+                        Open Wikipedia in Same Tab
+                    </a>
+                </p>
+
+                <p>
+                    <a href="#top" target="_top">Go to Top of Page</a>
+                </p>
+
+                <p>
+                    <a href="https://example.com" target="myframe">
+                        Open Example Website Inside the Iframe
+                    </a>
+                </p>
+            </div>
+
+            <div class="note">
+                <strong>_blank:</strong> Opens a new tab or window.<br>
+                <strong>_self:</strong> Opens in the current browsing context.<br>
+                <strong>_top:</strong> Opens in the full browser window.<br>
+                <strong>Named target:</strong> Opens in a frame with the matching name.
+            </div>
+        </section>
+
+        <!-- 5. Iframe -->
+        <section class="card">
+            <h2>5. Iframe Demonstration</h2>
+
+            <p>
+                An iframe embeds another webpage within the current webpage.
+                Click the link above to try loading a website in this frame.
+            </p>
+
+            <br>
+
+            <iframe
+                src="https://example.com"
+                name="myframe"
+                title="Embedded Website Example"
+                loading="lazy">
+            </iframe>
+
+            <p class="note">
+                Some websites block iframe embedding for security reasons.
+                If a site does not load, its server may prohibit being displayed
+                inside another webpage.
+            </p>
+        </section>
+
+        <!-- Marquee explanation -->
+        <section class="card">
+            <h2>6. Marquee Demonstration</h2>
+
+            <p>
+                The announcement bar at the top uses the HTML
+                <code>&lt;marquee&gt;</code> element to scroll text horizontally.
+            </p>
+
+            <p class="note">
+                The marquee element is obsolete in modern HTML.
+                CSS animations are recommended for production websites.
+                It is included here to satisfy the practical exercise.
+            </p>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2026 HTML Form Elements Practical</p>
+        <p>Designed using HTML5, CSS3 and JavaScript</p>
+        <a href="#top" style="color: #93c5fd;">Back to Top</a>
+    </footer>
+
+</body>
+</html>

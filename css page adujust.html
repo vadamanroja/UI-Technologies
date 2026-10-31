@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS Practical Lab | Professional Demo</title>
+
+  <style>
+    /* =========================
+       1. Global styles
+    ========================== */
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth; /* Smooth scrolling for anchor links */
+      scroll-padding-top: 90px;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.6;
+      color: #202938;
+      background: #f3f6fb;
+    }
+
+    a {
+      color: #175cd3;
+    }
+
+    .container {
+      width: min(1100px, 92%);
+      margin: 0 auto;
+    }
+
+    /* =========================
+       Header and navigation
+    ========================== */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      color: white;
+      background: #14213d;
+      box-shadow: 0 3px 12px rgb(0 0 0 / 15%);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 14px 0;
+    }
+
+    .brand {
+      margin: 0;
+      font-size: 1.15rem;
+      letter-spacing: 0.4px;
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-size: 0.92rem;
+    }
+
+    nav a:hover {
+      color: #fca311;
+    }
+
+    /* =========================
+       Hero with multiple backgrounds
+       Requirement 5
+    ========================== */
+    .hero {
+      min-height: 330px;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      color: white;
+      padding: 55px 20px;
+      background-image:
+        linear-gradient(rgb(20 33 61 / 78%), rgb(20 33 61 / 78%)),
+        url("https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1600&q=80"),
+        url("https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1200&q=80");
+      background-size: cover, cover, 260px auto;
+      background-position: center, center, right bottom;
+      background-repeat: no-repeat, no-repeat, repeat;
+      background-attachment: scroll;
+    }
+
+    .hero h1 {
+      margin: 0 0 12px;
+      font-size: clamp(2rem, 5vw, 3.2rem);
+    }
+
+    .hero p {
+      max-width: 720px;
+      margin: 0 auto 22px;
+      color: #e8eef8;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 10px 18px;
+      border-radius: 8px;
+      background: #fca311;
+      color: #14213d;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .button:hover {
+      background: #ffc45c;
+    }
+
+    main {
+      padding: 32px 0 60px;
+    }
+
+    .section {
+      margin: 0 0 28px;
+      padding: 26px;
+      background: white;
+      border: 1px solid #e0e6ef;
+      border-radius: 14px;
+      box-shadow: 0 5px 18px rgb(20 33 61 / 5%);
+    }
+
+    .section h2 {
+      margin-top: 0;
+      color: #14213d;
+    }
+
+    .subtitle {
+      color: #5b6575;
+      margin-top: -8px;
+    }
+
+    /* =========================
+       1. Table with black borders
+       Hover changes row colour
+    ========================== */
+    .table-wrap {
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      border: 2px solid black;
+      text-align: left;
+    }
+
+    th,
+    td {
+      border: 1px solid black;
+      padding: 12px 14px;
+    }
+
+    th {
+      background: #14213d;
+      color: white;
+    }
+
+    tbody tr {
+      transition: background-color 0.25s ease, color 0.25s ease;
+    }
+
+    tbody tr:hover {
+      background-color: #dbeafe;
+      color: #102a56;
+    }
+
+    /* =========================
+       2. Visibility examples
+    ========================== */
+    .demo-box {
+      padding: 12px;
+      border: 1px solid #a9b6c9;
+      border-radius: 7px;
+      background: #f8fafc;
+    }
+
+    .visible-demo {
+      visibility: visible;
+      background: #dcfce7;
+    }
+
+    .hidden-demo {
+      visibility: hidden; /* Invisible, but its space remains */
+      background: #fee2e2;
+    }
+
+    .collapse-demo {
+      visibility: collapse; /* Mainly collapses table rows/columns */
+      background: #fef3c7;
+    }
+
+    .display-none {
+      display: none; /* Removed from layout */
+    }
+
+    .display-inline {
+      display: inline;
+      background: #dbeafe;
+      padding: 4px;
+    }
+
+    .display-block {
+      display: block;
+      background: #dcfce7;
+      padding: 8px;
+      margin-top: 8px;
+    }
+
+    .display-contents {
+      display: contents; /* Wrapper box is not generated */
+    }
+
+    .display-contents span {
+      background: #fef3c7;
+      padding: 5px;
+    }
+
+    .display-list-item {
+      display: list-item;
+      list-style-type: square;
+      margin-left: 24px;
+      padding: 4px;
+    }
+
+    .demo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 12px;
+    }
+
+    /* =========================
+       3. Long page and anchor links
+    ========================== */
+    .jump-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
+    .jump-links a {
+      display: inline-block;
+      padding: 9px 14px;
+      border: 1px solid #175cd3;
+      border-radius: 7px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .jump-links a:hover {
+      background: #175cd3;
+      color: white;
+    }
+
+    .long-content article {
+      padding: 18px;
+      margin: 14px 0;
+      border-left: 4px solid #fca311;
+      background: #f8fafc;
+      border-radius: 0 8px 8px 0;
+    }
+
+    /* =========================
+       4. Padding versus margin
+    ========================== */
+    .spacing-stage {
+      padding: 18px;
+      background: #fff1d6;
+      border: 2px dashed #d97706;
+      border-radius: 10px;
+    }
+
+    .margin-example {
+      margin: 24px;
+      padding: 18px;
+      border: 2px solid #175cd3;
+      border-radius: 8px;
+      background: #dbeafe;
+    }
+
+    .padding-example {
+      margin: 0;
+      padding: 28px;
+      border: 2px solid #15803d;
+      border-radius: 8px;
+      background: #dcfce7;
+    }
+
+    .spacing-label {
+      margin: 0 0 8px;
+      font-size: 0.9rem;
+      font-weight: bold;
+    }
+
+    /* =========================
+       5. Multiple background images
+       on an individual element
+    ========================== */
+    .multi-background-card {
+      min-height: 220px;
+      padding: 28px;
+      color: white;
+      border-radius: 12px;
+      background-image:
+        linear-gradient(100deg, rgb(20 33 61 / 90%), rgb(20 33 61 / 45%)),
+        url("https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80"),
+        url("https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=500&q=80");
+      background-size: cover, cover, 140px 140px;
+      background-position: center, center, right bottom;
+      background-repeat: no-repeat, no-repeat, repeat;
+    }
+
+    footer {
+      padding: 22px 0;
+      text-align: center;
+      background: #14213d;
+      color: #e8eef8;
+    }
+
+    footer a {
+      color: #fca311;
+    }
+
+    @media (max-width: 650px) {
+      .nav {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      nav {
+        gap: 10px;
+      }
+
+      .section {
+        padding: 18px;
+      }
+
+      th,
+      td {
+        padding: 9px;
+      }
+    }
+
+    /* Respect users who prefer reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      * {
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+
+<body id="top">
+  <header>
+    <div class="container nav">
+      <p class="brand">CSS Practical Lab</p>
+      <nav aria-label="Main navigation">
+        <a href="#table">Table Hover</a>
+        <a href="#visibility">Visibility</a>
+        <a href="#scrolling">Scrolling</a>
+        <a href="#spacing">Spacing</a>
+        <a href="#backgrounds">Backgrounds</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div>
+      <h1>Explore CSS Properties</h1>
+      <p>A professional, responsive practical page demonstrating borders, hover states, visibility, display, smooth scrolling, spacing, and layered backgrounds.</p>
+      <a class="button" href="#table">Explore Examples</a>
+    </div>
+  </section>
+
+  <main class="container">
+    <!-- Requirement 1 -->
+    <section class="section" id="table">
+      <h2>1. Table Border and Hover Colour</h2>
+      <p class="subtitle">The table has black borders. Move your pointer over any data row to change its background colour.</p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Student ID</th>
+              <th>Name</th>
+              <th>Course</th>
+              <th>Result</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>101</td><td>Ananya</td><td>HTML &amp; CSS</td><td>Pass</td></tr>
+            <tr><td>102</td><td>Rahul</td><td>JavaScript</td><td>Pass</td></tr>
+            <tr><td>103</td><td>Priya</td><td>Web Design</td><td>Pass</td></tr>
+            <tr><td>104</td><td>Arjun</td><td>Responsive Design</td><td>Pass</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Requirement 2 -->
+    <section class="section" id="visibility">
+      <h2>2. Visibility and Display Properties</h2>
+      <p class="subtitle">Compare how each property affects the element and the space it occupies.</p>
+
+      <h3>Visibility</h3>
+      <div class="demo-grid">
+        <div class="demo-box">
+          <strong>visibility: visible</strong>
+          <p class="demo-box visible-demo">This element is visible.</p>
+        </div>
+        <div class="demo-box">
+          <strong>visibility: hidden</strong>
+          <p class="demo-box hidden-demo">This element is hidden.</p>
+          <small>Its space is still reserved.</small>
+        </div>
+        <div class="demo-box">
+          <strong>visibility: collapse</strong>
+          <p class="demo-box collapse-demo">Collapse example</p>
+          <small>Most useful for table rows and columns; support/behavior can vary for other elements.</small>
+        </div>
+      </div>
+
+      <h3>Display</h3>
+      <div class="demo-box">
+        <p><strong>display: none</strong> — The following element is removed from the layout:</p>
+        <div class="display-none">You cannot see this element and it takes no layout space.</div>
+        <p><strong>display: inline</strong> — <span class="display-inline">This span stays within the line.</span> Text continues alongside it.</p>
+        <p><strong>display: block</strong></p>
+        <span class="display-block">This span behaves like a block and starts on a new line.</span>
+        <p><strong>display: contents</strong></p>
+        <div class="display-contents">
+          <span>Child one</span>
+          <span>Child two</span>
+        </div>
+        <p><strong>display: list-item</strong></p>
+        <div class="display-list-item">This element behaves like a list item.</div>
+        <div class="display-list-item">Another list-item example.</div>
+      </div>
+    </section>
+
+    <!-- Requirement 3 -->
+    <section class="section" id="scrolling">
+      <h2>3. Smooth Scrolling: Top and Bottom Links</h2>
+      <p class="subtitle">Click either link to move smoothly through this long section.</p>
+
+      <div class="jump-links">
+        <a href="#bottom">Click to go to bottom of page ↓</a>
+        <a href="#top">↑ Click to go to top of page</a>
+      </div>
+
+      <div class="long-content">
+        <article>
+          <h3>Section A — Introduction</h3>
+          <p>CSS stands for Cascading Style Sheets. It controls the appearance, layout, colours, spacing, and responsiveness of HTML pages. Smooth scrolling makes navigation between sections more comfortable.</p>
+        </article>
+        <article>
+          <h3>Section B — Layout</h3>
+          <p>CSS layout properties help position elements and create clear page structures. Flexbox and Grid are useful tools for responsive layouts that adapt to different screen sizes.</p>
+        </article>
+        <article>
+          <h3>Section C — Styling</h3>
+          <p>Borders, backgrounds, shadows, typography, padding, and margins work together to create a consistent visual design. Keep contrast strong so content remains easy to read.</p>
+        </article>
+        <article>
+          <h3>Section D — Interactions</h3>
+          <p>Pseudo-classes such as :hover allow styles to change when users interact with elements. Transitions can make these changes feel smooth without using JavaScript.</p>
+        </article>
+        <article>
+          <h3>Section E — Responsive Design</h3>
+          <p>Responsive design uses flexible widths, adaptable layouts, and media queries to make websites work on desktops, tablets, and mobile devices.</p>
+        </article>
+        <article>
+          <h3>Section F — Conclusion</h3>
+          <p>Practising these CSS properties provides a strong foundation for building polished, accessible, and user-friendly web pages. Use the link below to reach the bottom of the page.</p>
+        </article>
+      </div>
+
+      <div class="jump-links" id="bottom">
+        <a href="#bottom">You are at the bottom section</a>
+        <a href="#top">↑ Click to go to top of page</a>
+      </div>
+    </section>
+
+    <!-- Requirement 4 -->
+    <section class="section" id="spacing">
+      <h2>4. Understanding Padding and Margin</h2>
+      <p class="subtitle"><strong>Padding</strong> is the space inside an element, between its content and border. <strong>Margin</strong> is the space outside the border, separating the element from others.</p>
+
+      <div class="spacing-stage">
+        <p class="spacing-label">Outer stage</p>
+        <div class="margin-example">
+          <strong>Margin example: 24px</strong>
+          <p>The blue box has margin around its outside. The yellow area around it helps illustrate the external spacing.</p>
+        </div>
+
+        <div class="padding-example">
+          <strong>Padding example: 28px</strong>
+          <p>This green box has padding inside its border. Notice the distance between the text and the green border.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Requirement 5 -->
+    <section class="section" id="backgrounds">
+      <h2>5. Multiple Background Images and Adjustable Sizes</h2>
+      <p class="subtitle">This card layers a gradient and two background images. Each layer has its own size, position, and repeat setting.</p>
+
+      <div class="multi-background-card">
+        <h3>Layered Background Design</h3>
+        <p>The gradient is on top, the main photo fills the card, and a smaller image layer is positioned at the bottom-right.</p>
+        <p>Try changing <code>background-size</code>, <code>background-position</code>, or <code>background-repeat</code> in the CSS.</p>
+      </div>
+
+      <p><strong>Example:</strong> <code>background-size: cover, cover, 140px 140px;</code></p>
+      <p>The values match the order of the background layers: gradient, main image, and smaller image.</p>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>CSS Practical Lab · Built with HTML5 and CSS3</p>
+      <a href="#top">Back to top ↑</a>
+    </div>
+  </footer>
+</body>
+</html>

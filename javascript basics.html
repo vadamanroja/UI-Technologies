@@ -1,0 +1,324 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Practical Programs</title>
+
+    <style>
+        /* General page styling */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f1f5f9;
+            color: #1e293b;
+            line-height: 1.6;
+        }
+
+        /* Header section */
+        header {
+            background: linear-gradient(135deg, #0f172a, #2563eb);
+            color: white;
+            text-align: center;
+            padding: 35px 20px;
+        }
+
+        header h1 {
+            margin-bottom: 8px;
+        }
+
+        /* Main content layout */
+        .container {
+            max-width: 1000px;
+            margin: 30px auto;
+            padding: 0 18px;
+        }
+
+        /* Individual program cards */
+        .card {
+            background: white;
+            margin-bottom: 22px;
+            padding: 25px;
+            border-radius: 12px;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 4px 12px rgba(15, 23, 42, 0.06);
+        }
+
+        .card h2 {
+            color: #1d4ed8;
+            margin-bottom: 12px;
+            font-size: 21px;
+        }
+
+        .output {
+            background: #f8fafc;
+            border-left: 4px solid #2563eb;
+            padding: 15px;
+            margin-top: 15px;
+            border-radius: 5px;
+            overflow-wrap: anywhere;
+        }
+
+        /* Button styling */
+        button {
+            background: #2563eb;
+            color: white;
+            border: none;
+            padding: 11px 18px;
+            border-radius: 7px;
+            cursor: pointer;
+            font-size: 14px;
+            margin-top: 12px;
+            transition: background 0.2s;
+        }
+
+        button:hover {
+            background: #1d4ed8;
+        }
+
+        .fruit-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .fruit {
+            background: #dbeafe;
+            color: #1e40af;
+            padding: 8px 14px;
+            border-radius: 20px;
+        }
+
+        code {
+            background: #e2e8f0;
+            padding: 3px 6px;
+            border-radius: 4px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #0f172a;
+            color: white;
+            margin-top: 30px;
+        }
+
+        @media (max-width: 600px) {
+            header h1 {
+                font-size: 24px;
+            }
+
+            .card {
+                padding: 18px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>JavaScript Practical Programs</h1>
+        <p>Comments, Arrays, Loops, Objects, Hoisting and Strict Mode</p>
+    </header>
+
+    <main class="container">
+
+        <!-- Program 1: Single-line and multiline comments -->
+        <section class="card">
+            <h2>1. Single-Line and Multi-Line Comments</h2>
+
+            <p>JavaScript comments explain the purpose of code and are not executed.</p>
+
+            <div class="output" id="commentsOutput"></div>
+        </section>
+
+        <!-- Program 2: Sort fruits in descending order -->
+        <section class="card">
+            <h2>2. Sort Fruits in Descending Order</h2>
+
+            <p>Click the button to sort the fruit names in reverse alphabetical order.</p>
+
+            <div class="fruit-list" id="fruitList"></div>
+
+            <button onclick="sortFruits()">Sort Descending</button>
+        </section>
+
+        <!-- Program 3: FOR/IN loop -->
+        <section class="card">
+            <h2>3. FOR/IN Loop</h2>
+
+            <p>The for...in loop iterates over the enumerable property keys of an object.</p>
+
+            <div class="output" id="loopOutput"></div>
+        </section>
+
+        <!-- Program 4: Object properties -->
+        <section class="card">
+            <h2>4. Person Object and Property Access</h2>
+
+            <p>Object properties can be accessed using dot notation and bracket notation.</p>
+
+            <div class="output" id="personOutput"></div>
+        </section>
+
+        <!-- Program 5: Variable hoisting -->
+        <section class="card">
+            <h2>5. Variable Hoisting</h2>
+
+            <p>A var declaration is hoisted, but its assignment remains at its original position.</p>
+
+            <div class="output" id="hoistingOutput"></div>
+        </section>
+
+        <!-- Program 6: Strict mode -->
+        <section class="card">
+            <h2>6. JavaScript Strict Mode</h2>
+
+            <p>Strict mode prevents certain unsafe JavaScript practices, including assigning to undeclared variables.</p>
+
+            <div class="output" id="strictOutput"></div>
+
+            <button onclick="testStrictMode()">Test Strict Mode Error</button>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>JavaScript Practical Lab | HTML, CSS and JavaScript</p>
+    </footer>
+
+    <script>
+        "use strict";
+
+        // PROGRAM 1: Comments
+
+        // This is a single-line comment.
+
+        /*
+           This is a multiline comment.
+           It can contain multiple lines of explanation.
+        */
+
+        document.getElementById("commentsOutput").innerHTML =
+            "<strong>Output:</strong> Comments are used to document code. " +
+            "Single-line comments use // and multiline comments use /* ... */.";
+
+
+        // PROGRAM 2: Fruit array and descending sorting
+
+        const fruits = ["Mango", "Apple", "Orange", "Banana", "Grapes"];
+
+        function displayFruits() {
+            const fruitList = document.getElementById("fruitList");
+
+            fruitList.innerHTML = "";
+
+            fruits.forEach(function(fruit) {
+                const item = document.createElement("span");
+
+                item.className = "fruit";
+                item.textContent = fruit;
+
+                fruitList.appendChild(item);
+            });
+        }
+
+        function sortFruits() {
+            fruits.sort(function(a, b) {
+                return b.localeCompare(a);
+            });
+
+            displayFruits();
+        }
+
+        displayFruits();
+
+
+        // PROGRAM 3: FOR/IN loop
+
+        const student = {
+            name: "Roja",
+            course: "Computer Science",
+            year: 2026
+        };
+
+        let loopResult = "";
+
+        for (const key in student) {
+            loopResult += key + ": " + student[key] + "<br>";
+        }
+
+        document.getElementById("loopOutput").innerHTML = loopResult;
+
+
+        // PROGRAM 4: Object property access
+
+        const person = {
+            firstname: "Vadaman",
+            lastname: "Roja"
+        };
+
+        // Method 1: Dot notation
+        const firstName1 = person.firstname;
+        const lastName1 = person.lastname;
+
+        // Method 2: Bracket notation
+        const firstName2 = person["firstname"];
+        const lastName2 = person["lastname"];
+
+        document.getElementById("personOutput").innerHTML =
+            "<strong>Dot Notation:</strong> " +
+            firstName1 + " " + lastName1 +
+            "<br><strong>Bracket Notation:</strong> " +
+            firstName2 + " " + lastName2;
+
+
+        // PROGRAM 5: Variable hoisting
+
+        function demonstrateHoisting() {
+            let result = "";
+
+            // Access the var variable before its declaration.
+            result += "Before declaration: " + hoistedVariable + "<br>";
+
+            // Declaration and initialization happen here.
+            var hoistedVariable = "Hello, Hoisting!";
+
+            result += "After initialization: " + hoistedVariable;
+
+            return result;
+        }
+
+        document.getElementById("hoistingOutput").innerHTML =
+            demonstrateHoisting();
+
+
+        // PROGRAM 6: Strict mode
+
+        function testStrictMode() {
+            try {
+                // This assignment fails because the variable is undeclared.
+                undeclaredVariable = "Hello";
+            } catch (error) {
+                document.getElementById("strictOutput").innerHTML =
+                    "<strong>Error caught:</strong> " +
+                    error.name + ": " + error.message +
+                    "<br><br><strong>Reason:</strong> " +
+                    "Strict mode does not allow assignment to an undeclared variable.";
+            }
+        }
+
+        document.getElementById("strictOutput").innerHTML =
+            "Click the button to see the strict mode error.";
+    </script>
+
+</body>
+</html>

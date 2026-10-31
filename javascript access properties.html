@@ -1,0 +1,390 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Practical Programs</title>
+
+    <style>
+        /* General page styling */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f1f5f9;
+            color: #1e293b;
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, #172554, #2563eb);
+            color: white;
+            text-align: center;
+            padding: 35px 15px;
+        }
+
+        header h1 {
+            font-size: 30px;
+            margin-bottom: 8px;
+        }
+
+        header p {
+            color: #dbeafe;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1000px;
+            margin: 30px auto;
+        }
+
+        .card {
+            background: white;
+            padding: 25px;
+            margin-bottom: 22px;
+            border-radius: 12px;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 4px 12px rgba(15, 23, 42, 0.06);
+        }
+
+        .card h2 {
+            color: #1d4ed8;
+            font-size: 21px;
+            margin-bottom: 12px;
+        }
+
+        .description {
+            color: #64748b;
+            margin-bottom: 18px;
+        }
+
+        button {
+            background: #2563eb;
+            color: white;
+            padding: 10px 18px;
+            margin: 5px 5px 5px 0;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background 0.2s;
+        }
+
+        button:hover {
+            background: #1e40af;
+        }
+
+        .secondary {
+            background: #475569;
+        }
+
+        .secondary:hover {
+            background: #334155;
+        }
+
+        .danger {
+            background: #dc2626;
+        }
+
+        .danger:hover {
+            background: #b91c1c;
+        }
+
+        .output {
+            background: #eff6ff;
+            border-left: 4px solid #2563eb;
+            padding: 14px;
+            margin-top: 15px;
+            border-radius: 5px;
+            white-space: pre-wrap;
+            overflow-wrap: anywhere;
+        }
+
+        .demo-box {
+            padding: 18px;
+            margin-bottom: 12px;
+            background: #dbeafe;
+            border: 1px solid #93c5fd;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .count {
+            font-size: 36px;
+            font-weight: bold;
+            color: #2563eb;
+            margin: 12px 0;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        footer {
+            background: #172554;
+            color: white;
+            text-align: center;
+            padding: 18px;
+            margin-top: 35px;
+        }
+
+        @media (max-width: 600px) {
+            header h1 {
+                font-size: 23px;
+            }
+
+            .container {
+                width: 94%;
+            }
+
+            .card {
+                padding: 18px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>JavaScript Practical Programs</h1>
+    <p>Objects, Functions, Counters and Prototypes</p>
+</header>
+
+<main class="container">
+
+    <!-- Program 1: this keyword -->
+    <section class="card">
+        <h2>1. Using the this Keyword</h2>
+        <p class="description">
+            Click the button to hide the box. The this keyword refers
+            to the button that triggered the event.
+        </p>
+
+        <div class="demo-box" id="thisDemo">
+            <h3>This element will disappear!</h3>
+            <p>Click the button below to hide this box.</p>
+            <button onclick="hideBox(this)">Hide This Box</button>
+        </div>
+
+        <div class="output" id="thisOutput">
+            Output: The box is currently visible.
+        </div>
+    </section>
+
+    <!-- Program 2: call() and apply() -->
+    <section class="card">
+        <h2>2. Function Invocation Using call() and apply()</h2>
+        <p class="description">
+            Both methods invoke a function with a specified this value.
+            call() accepts arguments separately, while apply() accepts
+            arguments as an array.
+        </p>
+
+        <button onclick="useCall()">Execute call()</button>
+        <button onclick="useApply()">Execute apply()</button>
+
+        <div class="output" id="callApplyOutput">
+            Output: Click a button to see the result.
+        </div>
+    </section>
+
+    <!-- Program 3: Simple counter -->
+    <section class="card">
+        <h2>3. Counter Using a Button</h2>
+        <p class="description">
+            Every click on Count increments the counter by one.
+        </p>
+
+        <div class="count" id="counterValue">0</div>
+
+        <button onclick="incrementCounter()">Count +1</button>
+        <button class="secondary" onclick="decrementCounter()">Count -1</button>
+        <button class="danger" onclick="resetCounter()">Reset</button>
+
+        <div class="output" id="counterOutput">
+            Output: Counter initialized to 0.
+        </div>
+    </section>
+
+    <!-- Program 4: Getter and setter -->
+    <section class="card">
+        <h2>4. Counter Using Getter and Setter</h2>
+        <p class="description">
+            The getter reads the counter value, and the setter updates it.
+        </p>
+
+        <div class="count" id="accessorValue">0</div>
+
+        <button onclick="increaseAccessor()">Increment</button>
+        <button class="secondary" onclick="setAccessorValue()">Set Value to 10</button>
+        <button class="danger" onclick="resetAccessor()">Reset</button>
+
+        <div class="output" id="accessorOutput">
+            Output: Accessor counter initialized to 0.
+        </div>
+    </section>
+
+    <!-- Program 5: Function prototype -->
+    <section class="card">
+        <h2>5. Adding Properties Using Prototypes</h2>
+        <p class="description">
+            Add a new property and method to an existing constructor's
+            prototype so its instances can use them.
+        </p>
+
+        <button onclick="showPrototype()">Display Prototype Properties</button>
+
+        <div class="output" id="prototypeOutput">
+            Output: Click the button to display prototype properties.
+        </div>
+    </section>
+
+</main>
+
+<footer>
+    <p>JavaScript Practical Lab | HTML, CSS and JavaScript</p>
+</footer>
+
+<script>
+    // PROGRAM 1: Using this keyword
+    function hideBox(button) {
+        // 'this' refers to the button that was clicked.
+        button.parentElement.style.display = "none";
+
+        document.getElementById("thisOutput").textContent =
+            "Output: The box and its button have disappeared.";
+    }
+
+    // PROGRAM 2: call() and apply()
+    const student = {
+        firstName: "Vadaman",
+        lastName: "Roja"
+    };
+
+    function displayStudent(city, course) {
+        return "Name: " + this.firstName + " " + this.lastName +
+               "\nCity: " + city +
+               "\nCourse: " + course;
+    }
+
+    function useCall() {
+        // Arguments are passed individually.
+        const result = displayStudent.call(
+            student, "Hyderabad", "Computer Science"
+        );
+
+        document.getElementById("callApplyOutput").textContent =
+            "Using call():\n" + result;
+    }
+
+    function useApply() {
+        // Arguments are passed as an array.
+        const result = displayStudent.apply(
+            student, ["Hyderabad", "Computer Science"]
+        );
+
+        document.getElementById("callApplyOutput").textContent =
+            "Using apply():\n" + result;
+    }
+
+    // PROGRAM 3: Simple counter
+    let count = 0;
+
+    function updateCounter() {
+        document.getElementById("counterValue").textContent = count;
+
+        document.getElementById("counterOutput").textContent =
+            "Output: Current counter value = " + count;
+    }
+
+    function incrementCounter() {
+        count++;
+        updateCounter();
+    }
+
+    function decrementCounter() {
+        count--;
+        updateCounter();
+    }
+
+    function resetCounter() {
+        count = 0;
+        updateCounter();
+    }
+
+    // PROGRAM 4: Counter using getter and setter
+    const accessorCounter = {
+        _count: 0,
+
+        get count() {
+            return this._count;
+        },
+
+        set count(value) {
+            if (Number.isInteger(value) && value >= 0) {
+                this._count = value;
+            } else {
+                throw new Error("Counter must be a non-negative integer.");
+            }
+        }
+    };
+
+    function updateAccessor() {
+        document.getElementById("accessorValue").textContent =
+            accessorCounter.count;
+
+        document.getElementById("accessorOutput").textContent =
+            "Output: Current accessor counter value = " +
+            accessorCounter.count;
+    }
+
+    function increaseAccessor() {
+        accessorCounter.count = accessorCounter.count + 1;
+        updateAccessor();
+    }
+
+    function setAccessorValue() {
+        accessorCounter.count = 10;
+        updateAccessor();
+    }
+
+    function resetAccessor() {
+        accessorCounter.count = 0;
+        updateAccessor();
+    }
+
+    // PROGRAM 5: Adding properties and methods using prototypes
+    function Employee(name, role) {
+        this.name = name;
+        this.role = role;
+    }
+
+    // Add a new property to the constructor prototype.
+    Employee.prototype.company = "Tech Solutions";
+
+    // Add a new method to the constructor prototype.
+    Employee.prototype.getDetails = function () {
+        return "Name: " + this.name +
+               "\nRole: " + this.role +
+               "\nCompany: " + this.company;
+    };
+
+    function showPrototype() {
+        const employee = new Employee("Vadaman Roja", "Web Developer");
+
+        document.getElementById("prototypeOutput").textContent =
+            "Prototype Properties and Method:\n" +
+            employee.getDetails() +
+            "\n\nCompany property exists on prototype: " +
+            Employee.prototype.hasOwnProperty("company");
+    }
+</script>
+
+</body>
+</html>

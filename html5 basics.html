@@ -1,0 +1,610 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A professional beginner-friendly guide to HTML and CSS.">
+    <title>WebCraft | HTML & CSS Learning Hub</title>
+
+    <style>
+        /* ---------- GLOBAL STYLES ---------- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 90px;
+        }
+
+        body {
+            font-family: "Segoe UI", Arial, sans-serif;
+            background: #f5f7fb;
+            color: #243047;
+            line-height: 1.7;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .container {
+            width: min(1100px, 90%);
+            margin: auto;
+        }
+
+        /* ---------- NAVIGATION ---------- */
+        header {
+            background: #111c35;
+            color: white;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 16px #111c3520;
+        }
+
+        .navbar {
+            min-height: 76px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: 800;
+            letter-spacing: -1px;
+        }
+
+        .logo span {
+            color: #66d9c1;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 24px;
+        }
+
+        nav a {
+            font-size: 14px;
+            color: #e0e7f5;
+            transition: color 0.3s ease;
+        }
+
+        /* Pseudo-class: hover */
+        nav a:hover {
+            color: #66d9c1;
+        }
+
+        /* Pseudo-class: focus */
+        a:focus-visible {
+            outline: 3px solid #66d9c1;
+            outline-offset: 5px;
+        }
+
+        /* ---------- HERO SECTION ---------- */
+        .hero {
+            background: linear-gradient(135deg, #111c35, #203d67);
+            color: white;
+            padding: 85px 0;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .eyebrow {
+            display: inline-block;
+            background: #66d9c120;
+            color: #66d9c1;
+            padding: 6px 14px;
+            border-radius: 30px;
+            font-size: 13px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: clamp(36px, 5vw, 56px);
+            line-height: 1.15;
+            margin-bottom: 22px;
+        }
+
+        h1 span {
+            color: #66d9c1;
+        }
+
+        .hero p {
+            color: #d3dced;
+            margin-bottom: 28px;
+            max-width: 540px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 22px;
+            border-radius: 8px;
+            background: #66d9c1;
+            color: #10243a;
+            font-weight: 700;
+            transition: transform 0.3s, background 0.3s;
+        }
+
+        .btn:hover {
+            background: #8cebd7;
+            transform: translateY(-3px);
+        }
+
+        .hero img {
+            width: 100%;
+            display: block;
+            border-radius: 18px;
+            box-shadow: 0 18px 45px #00000035;
+        }
+
+        /* ---------- GENERAL SECTIONS ---------- */
+        section {
+            padding: 70px 0;
+        }
+
+        .section-heading {
+            text-align: center;
+            margin-bottom: 38px;
+        }
+
+        .section-heading h2 {
+            font-size: 32px;
+            color: #14213d;
+            margin-bottom: 10px;
+        }
+
+        .section-heading p {
+            color: #667085;
+        }
+
+        /* Pseudo-element: decorative line */
+        .section-heading h2::after {
+            content: "";
+            display: block;
+            width: 55px;
+            height: 4px;
+            background: #19a98b;
+            border-radius: 5px;
+            margin: 12px auto 0;
+        }
+
+        /* ---------- ABOUT ---------- */
+        .about-box {
+            background: white;
+            border: 1px solid #e5eaf2;
+            border-radius: 14px;
+            padding: 30px;
+            box-shadow: 0 8px 25px #17255408;
+        }
+
+        /* Pseudo-element: first letter */
+        .about-box > p:first-of-type::first-letter {
+            font-size: 30px;
+            font-weight: 800;
+            color: #139a7d;
+        }
+
+        blockquote {
+            margin-top: 22px;
+            padding: 18px 22px;
+            border-left: 4px solid #19a98b;
+            background: #edfaf6;
+            border-radius: 0 8px 8px 0;
+            font-style: italic;
+            color: #31574f;
+        }
+
+        blockquote::before {
+            content: "“";
+            font-size: 28px;
+            font-weight: bold;
+            color: #139a7d;
+        }
+
+        /* ---------- HTML TOPICS ---------- */
+        .topics {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+        }
+
+        .topic-card {
+            background: white;
+            border: 1px solid #e4e9f1;
+            padding: 26px;
+            border-radius: 14px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .topic-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 14px 30px #17255412;
+        }
+
+        .topic-card:nth-child(2) {
+            border-top: 4px solid #19a98b;
+        }
+
+        .topic-card:nth-child(odd) {
+            background-color: #ffffff;
+        }
+
+        .topic-card h3 {
+            margin-bottom: 10px;
+            color: #14213d;
+        }
+
+        .topic-card p {
+            color: #667085;
+            font-size: 15px;
+        }
+
+        .tag {
+            display: inline-block;
+            background: #e6f8f3;
+            color: #087c66;
+            padding: 4px 10px;
+            border-radius: 5px;
+            font-size: 12px;
+            font-weight: 700;
+            margin-bottom: 14px;
+        }
+
+        /* ---------- HTML ELEMENTS DEMO ---------- */
+        .demo-section {
+            background: #eaf0f8;
+        }
+
+        .demo-panel {
+            background: white;
+            border-radius: 14px;
+            padding: 30px;
+        }
+
+        .demo-panel ul {
+            padding-left: 24px;
+            margin: 14px 0 20px;
+        }
+
+        /* Pseudo-class: nth-child */
+        .demo-panel li:nth-child(even) {
+            color: #087c66;
+        }
+
+        .demo-panel li {
+            margin-bottom: 5px;
+        }
+
+        .demo-panel label {
+            display: block;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .demo-panel input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            font: inherit;
+            margin-bottom: 15px;
+        }
+
+        /* Pseudo-class: focus */
+        .demo-panel input:focus {
+            outline: none;
+            border-color: #139a7d;
+            box-shadow: 0 0 0 3px #19a98b25;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #dce3ed;
+            margin: 24px 0;
+        }
+
+        .demo-link {
+            color: #087c66;
+            font-weight: 700;
+        }
+
+        /* Pseudo-class: active */
+        .demo-link:active {
+            color: #e05252;
+        }
+
+        /* Pseudo-element: text selection */
+        ::selection {
+            background: #b9f2e3;
+            color: #10243a;
+        }
+
+        /* ---------- FOOTER ---------- */
+        footer {
+            background: #111c35;
+            color: #d3dced;
+            text-align: center;
+            padding: 28px 15px;
+        }
+
+        footer p {
+            font-size: 14px;
+        }
+
+        footer a {
+            color: #66d9c1;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* ---------- RESPONSIVE DESIGN ---------- */
+        @media (max-width: 800px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+            }
+
+            .hero img {
+                max-width: 550px;
+            }
+
+            .topics {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .navbar {
+                padding: 16px 0;
+                flex-direction: column;
+            }
+
+            nav ul {
+                justify-content: center;
+                gap: 14px;
+            }
+        }
+
+        @media (max-width: 520px) {
+            .topics {
+                grid-template-columns: 1fr;
+            }
+
+            .hero {
+                padding: 55px 0;
+            }
+
+            section {
+                padding: 50px 0;
+            }
+
+            .about-box,
+            .demo-panel {
+                padding: 22px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVIGATION -->
+    <header>
+        <div class="container navbar">
+            <a href="#home" class="logo">Web<span>Craft.</span></a>
+
+            <nav aria-label="Main navigation">
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#topics">Topics</a></li>
+                    <li><a href="#demo">HTML Demo</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <div class="hero" id="home">
+        <div class="container hero-content">
+            <div>
+                <span class="eyebrow">YOUR WEB DEVELOPMENT JOURNEY</span>
+
+                <h1>Build Your First <span>Web Page</span></h1>
+
+                <p>
+                    Learn the fundamentals of HTML and CSS through a
+                    practical, beginner-friendly webpage. Explore semantic
+                    elements, internal navigation, and modern styling.
+                </p>
+
+                <a href="#topics" class="btn">Explore HTML Topics →</a>
+            </div>
+
+            <div>
+                <img
+                    src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=900&q=85"
+                    alt="Laptop and workspace used for web development">
+            </div>
+        </div>
+    </div>
+
+    <main>
+        <!-- ABOUT -->
+        <section id="about">
+            <div class="container">
+                <div class="section-heading">
+                    <h2>About This Project</h2>
+                    <p>Understand the building blocks of a website.</p>
+                </div>
+
+                <div class="about-box">
+                    <p>
+                        <b>HTML (HyperText Markup Language)</b> provides
+                        the structure of a webpage, while <i>CSS (Cascading
+                        Style Sheets)</i> controls its appearance and layout.
+                        Together, they help developers create accessible,
+                        responsive, and attractive websites.
+                    </p>
+
+                    <blockquote>
+                        Every great website begins with a strong foundation
+                        in HTML and CSS.
+                    </blockquote>
+                </div>
+            </div>
+        </section>
+
+        <hr>
+
+        <!-- TOPICS -->
+        <section id="topics">
+            <div class="container">
+                <div class="section-heading">
+                    <h2>What You Will Learn</h2>
+                    <p>Explore essential concepts of frontend development.</p>
+                </div>
+
+                <div class="topics">
+                    <div class="topic-card">
+                        <span class="tag">01 · STRUCTURE</span>
+                        <h3>HTML Fundamentals</h3>
+                        <p>
+                            Understand headings, paragraphs, divisions,
+                            spans, and other fundamental HTML elements.
+                        </p>
+                    </div>
+
+                    <div class="topic-card">
+                        <span class="tag">02 · STYLING</span>
+                        <h3>CSS Styling</h3>
+                        <p>
+                            Create attractive layouts with colors,
+                            spacing, borders, typography, and shadows.
+                        </p>
+                    </div>
+
+                    <div class="topic-card">
+                        <span class="tag">03 · NAVIGATION</span>
+                        <h3>Internal Links</h3>
+                        <p>
+                            Use anchor elements and section IDs to navigate
+                            directly to different parts of the webpage.
+                        </p>
+                    </div>
+
+                    <div class="topic-card">
+                        <span class="tag">04 · INTERACTION</span>
+                        <h3>Pseudo-Classes</h3>
+                        <p>
+                            Style elements based on states such as hover,
+                            focus, active, and their position in a list.
+                        </p>
+                    </div>
+
+                    <div class="topic-card">
+                        <span class="tag">05 · DESIGN</span>
+                        <h3>Pseudo-Elements</h3>
+                        <p>
+                            Enhance content with decorative text,
+                            generated symbols, and first-letter styling.
+                        </p>
+                    </div>
+
+                    <div class="topic-card">
+                        <span class="tag">06 · RESPONSIVE</span>
+                        <h3>Responsive Layout</h3>
+                        <p>
+                            Use CSS Grid and media queries to adapt your
+                            webpage to desktops, tablets, and phones.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- HTML ELEMENTS DEMONSTRATION -->
+        <section class="demo-section" id="demo">
+            <div class="container">
+                <div class="section-heading">
+                    <h2>HTML Elements in Action</h2>
+                    <p>A practical demonstration of the required HTML tags.</p>
+                </div>
+
+                <div class="demo-panel">
+                    <h3>Welcome to HTML Basics</h3>
+
+                    <p>
+                        This is a <b>bold</b> word and this is an
+                        <i>italic</i> word. A <span class="tag">SPAN</span>
+                        is useful for styling a small part of inline text.
+                    </p>
+
+                    <hr>
+
+                    <h3>Important HTML Elements</h3>
+
+                    <ul>
+                        <li>Heading and paragraph elements</li>
+                        <li>Bold and italic text formatting</li>
+                        <li>Anchor links and internal navigation</li>
+                        <li>Images, divisions, and span elements</li>
+                        <li>Labels, blockquotes, and horizontal rules</li>
+                    </ul>
+
+                    <hr>
+
+                    <h3>Try the Input Field</h3>
+
+                    <form action="#demo" method="get">
+                        <label for="student-name">Enter Your Name</label>
+                        <input
+                            type="text"
+                            id="student-name"
+                            name="student-name"
+                            placeholder="Type your name here..."
+                            autocomplete="name">
+                    </form>
+
+                    <p>
+                        Notice how the input border changes color when
+                        you click inside it. This uses the CSS
+                        <b>:focus</b> pseudo-class.
+                    </p>
+
+                    <p style="margin-top: 18px;">
+                        <a href="#home" class="demo-link">
+                            ↑ Back to Top
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>
+            © 2026 WebCraft Learning Hub. Built with HTML and CSS.
+        </p>
+        <p>
+            <a href="#home">Return to Home</a>
+        </p>
+    </footer>
+
+</body>
+</html>

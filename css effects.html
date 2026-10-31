@@ -1,0 +1,501 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced CSS Effects</title>
+
+    <style>
+        /* 1. Global CSS Styling */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f1f5f9;
+            color: #1e293b;
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, #0f172a, #2563eb);
+            color: white;
+            text-align: center;
+            padding: 30px 15px;
+        }
+
+        header h1 {
+            margin-bottom: 8px;
+        }
+
+        nav {
+            background-color: #1e293b;
+            padding: 12px;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: #93c5fd;
+        }
+
+        main {
+            max-width: 1100px;
+            margin: auto;
+            padding: 25px 15px;
+        }
+
+        section {
+            background-color: white;
+            padding: 25px;
+            margin-bottom: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(15, 23, 42, 0.08);
+        }
+
+        h2 {
+            color: #1d4ed8;
+            margin-bottom: 15px;
+        }
+
+        /* 2. CSS Box Shadow and Hover Cursor */
+        .card-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .card {
+            flex: 1 1 250px;
+            padding: 20px;
+            border-radius: 10px;
+            background: #f8fafc;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 25px rgba(37, 99, 235, 0.25);
+        }
+
+        /* Image Box Shadow */
+        .shadow-image {
+            width: 100%;
+            max-width: 350px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.3);
+            cursor: zoom-in;
+            transition: box-shadow 0.3s;
+        }
+
+        .shadow-image:hover {
+            box-shadow: 0 0 20px #3b82f6;
+        }
+
+        /* 3. CSS Animation: name, duration,
+           iteration-count and delay */
+        @keyframes slideIn {
+            from {
+                transform: translateX(-100px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        .animated-box {
+            background: linear-gradient(135deg, #2563eb, #7c3aed);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+
+            animation-name: slideIn;
+            animation-duration: 2s;
+            animation-iteration-count: 3;
+            animation-delay: 0.5s;
+        }
+
+        /* 4. Pagination with Spaces */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 15px 0 25px;
+        }
+
+        .pagination a {
+            color: #2563eb;
+            text-decoration: none;
+            padding: 10px 15px;
+            border: 1px solid #cbd5e1;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+
+        .pagination a:hover {
+            background-color: #2563eb;
+            color: white;
+        }
+
+        .pagination a.active {
+            background-color: #1d4ed8;
+            color: white;
+        }
+
+        /* Pagination without Spaces */
+        .pagination-no-space {
+            display: flex;
+            justify-content: center;
+            margin: 15px 0;
+        }
+
+        .pagination-no-space a {
+            padding: 10px 15px;
+            color: #2563eb;
+            text-decoration: none;
+            border: 1px solid #cbd5e1;
+            margin-left: -1px;
+        }
+
+        .pagination-no-space a:first-child {
+            border-radius: 5px 0 0 5px;
+        }
+
+        .pagination-no-space a:last-child {
+            border-radius: 0 5px 5px 0;
+        }
+
+        .pagination-no-space a:hover {
+            background-color: #2563eb;
+            color: white;
+        }
+
+        /* 5. CSS Positioning */
+        .position-demo {
+            padding: 15px;
+            background-color: #dbeafe;
+            border-left: 5px solid #2563eb;
+            margin: 15px 0;
+        }
+
+        .static-box {
+            position: static;
+            background: #dcfce7;
+            padding: 10px;
+        }
+
+        .relative-box {
+            position: relative;
+            left: 20px;
+            background: #fef3c7;
+            padding: 10px;
+        }
+
+        .absolute-container {
+            position: relative;
+            height: 120px;
+            background: #e0e7ff;
+            border: 2px dashed #6366f1;
+            padding: 10px;
+            margin-top: 15px;
+        }
+
+        .absolute-box {
+            position: absolute;
+            right: 10px;
+            bottom: 10px;
+            background: #7c3aed;
+            color: white;
+            padding: 10px;
+        }
+
+        .fixed-note {
+            position: fixed;
+            right: 15px;
+            bottom: 15px;
+            background: #0f172a;
+            color: white;
+            padding: 12px 16px;
+            border-radius: 8px;
+            z-index: 200;
+            box-shadow: 0 4px 12px #94a3b8;
+        }
+
+        /* Sticky positioning is demonstrated by nav */
+
+        /* 6. Overflow with Scroll */
+        .overflow-box {
+            width: 100%;
+            height: 140px;
+            overflow: scroll;
+            border: 2px solid #2563eb;
+            background: #eff6ff;
+            padding: 15px;
+            border-radius: 8px;
+        }
+
+        .wide-content {
+            width: 800px;
+            padding: 10px;
+            background: #dbeafe;
+            margin-top: 10px;
+        }
+
+        /* 7. Image Opacity */
+        .opacity-image {
+            display: block;
+            width: 100%;
+            max-width: 350px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            opacity: 0.5;
+            transition: opacity 0.4s ease;
+            cursor: pointer;
+        }
+
+        .opacity-image:hover {
+            opacity: 1;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #0f172a;
+            color: white;
+        }
+
+        @media (max-width: 600px) {
+            nav a {
+                display: inline-block;
+                margin: 5px;
+            }
+
+            section {
+                padding: 18px;
+            }
+
+            .fixed-note {
+                right: 8px;
+                bottom: 8px;
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Advanced CSS Effects</h1>
+        <p>Explore shadows, animations, positioning and more</p>
+    </header>
+
+    <!-- Sticky Navigation -->
+    <nav>
+        <a href="#shadows">Shadows</a>
+        <a href="#animation">Animation</a>
+        <a href="#pagination">Pagination</a>
+        <a href="#positions">Positions</a>
+        <a href="#overflow">Overflow</a>
+        <a href="#opacity">Opacity</a>
+    </nav>
+
+    <main>
+
+        <!-- 1. Shadow Effects -->
+        <section id="shadows">
+            <h2>1. CSS Shadow Effects and Hover Cursor</h2>
+            <p>Hover over the cards and image to see the shadow effects.</p>
+            <br>
+
+            <div class="card-container">
+                <div class="card">
+                    <h3>Box Shadow</h3>
+                    <p>This card uses box-shadow and a hover animation.</p>
+                </div>
+
+                <div class="card">
+                    <h3>Interactive Card</h3>
+                    <p>The cursor changes to a pointer when hovered.</p>
+                </div>
+            </div>
+
+            <br>
+            <h3>Image Shadow</h3>
+            <br>
+            <img
+                class="shadow-image"
+                src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=700&q=80"
+                alt="Laptop on a desk"
+            >
+        </section>
+
+        <!-- 2. Animation -->
+        <section id="animation">
+            <h2>2. CSS Animation</h2>
+            <p>
+                Properties used: animation-name, animation-duration,
+                animation-iteration-count and animation-delay.
+            </p>
+            <br>
+
+            <div class="animated-box">
+                This box slides in three times!
+            </div>
+        </section>
+
+        <!-- Pagination -->
+        <section id="pagination">
+            <h2>3. Pagination with Hover Effects</h2>
+
+            <h3>Pagination with Spaces</h3>
+            <div class="pagination">
+                <a href="#pagination">«</a>
+                <a href="#pagination" class="active">1</a>
+                <a href="#pagination">2</a>
+                <a href="#pagination">3</a>
+                <a href="#pagination">4</a>
+                <a href="#pagination">»</a>
+            </div>
+
+            <h3>Pagination without Spaces</h3>
+            <div class="pagination-no-space">
+                <a href="#pagination">«</a>
+                <a href="#pagination">1</a>
+                <a href="#pagination">2</a>
+                <a href="#pagination">3</a>
+                <a href="#pagination">»</a>
+            </div>
+        </section>
+
+        <!-- 4. Positioning -->
+        <section id="positions">
+            <h2>4. CSS Position Properties</h2>
+
+            <div class="position-demo">
+                <strong>Static:</strong>
+                <div class="static-box">
+                    Default position in the normal document flow.
+                </div>
+            </div>
+
+            <div class="position-demo">
+                <strong>Relative:</strong>
+                <div class="relative-box">
+                    Moved 20px to the right from its normal position.
+                </div>
+            </div>
+
+            <div class="absolute-container">
+                <strong>Absolute:</strong>
+                <p>Positioned relative to this parent container.</p>
+                <div class="absolute-box">Absolute Box</div>
+            </div>
+
+            <div class="position-demo">
+                <strong>Fixed:</strong>
+                <p>
+                    Look at the bottom-right corner of your screen.
+                    The fixed note remains there while scrolling.
+                </p>
+            </div>
+
+            <div class="position-demo">
+                <strong>Sticky:</strong>
+                <p>
+                    The navigation bar at the top sticks to the viewport
+                    when you scroll down.
+                </p>
+            </div>
+        </section>
+
+        <!-- 5. Overflow -->
+        <section id="overflow">
+            <h2>5. Handling Overflow Using Scroll</h2>
+            <p>
+                The box below uses overflow: scroll to provide
+                horizontal and vertical scrolling.
+            </p>
+            <br>
+
+            <div class="overflow-box">
+                <h3>Scrollable Content</h3>
+                <p>
+                    This container has a fixed height. When the content
+                    exceeds its dimensions, scrollbars allow you to
+                    view the hidden content.
+                </p>
+
+                <div class="wide-content">
+                    This content is 800px wide to demonstrate horizontal
+                    scrolling on smaller screens.
+                </div>
+
+                <p>
+                    Additional content line 1: CSS controls layout.
+                </p>
+                <p>
+                    Additional content line 2: Overflow manages content
+                    that extends beyond a container.
+                </p>
+                <p>
+                    Additional content line 3: Scroll to see everything.
+                </p>
+                <p>
+                    Additional content line 4: This is the final line.
+                </p>
+            </div>
+        </section>
+
+        <!-- 6. Opacity -->
+        <section id="opacity">
+            <h2>6. Adding Opacity to an Image</h2>
+            <p>
+                The image initially has 50% opacity. Hover over it to
+                restore full visibility.
+            </p>
+            <br>
+
+            <img
+                class="opacity-image"
+                src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=700&q=80"
+                alt="Person working on a laptop"
+            >
+        </section>
+
+    </main>
+
+    <!-- Fixed Position Demo -->
+    <div class="fixed-note">
+        Fixed Position Example
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Advanced CSS Practicals | Designed with HTML5 and CSS3</p>
+    </footer>
+
+</body>
+</html>

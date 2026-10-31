@@ -1,0 +1,425 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A professional demonstration of HTML5 semantic and non-semantic elements.">
+    <title>HTML5 Semantic Elements | Web Development Lab</title>
+
+    <style>
+        /* General page styling */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 1.7;
+            color: #263247;
+            background: #f1f5f9;
+        }
+
+        .container {
+            width: min(1100px, 92%);
+            margin: auto;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #102a43, #176b87);
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: clamp(1.8rem, 4vw, 2.7rem);
+            margin-bottom: 8px;
+        }
+
+        header p {
+            color: #d9edf7;
+        }
+
+        /* Navigation */
+        nav {
+            background: #16324f;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        nav a {
+            display: block;
+            color: white;
+            padding: 14px 18px;
+            text-decoration: none;
+            transition: background 0.3s;
+        }
+
+        nav a:hover,
+        nav a:focus {
+            background: #168aad;
+        }
+
+        /* Main layout */
+        main {
+            padding: 35px 0;
+        }
+
+        section,
+        article,
+        aside,
+        .non-semantic-box {
+            background: white;
+            padding: 24px;
+            margin-bottom: 25px;
+            border-radius: 12px;
+            box-shadow: 0 5px 18px rgba(15, 35, 55, 0.08);
+        }
+
+        h2 {
+            color: #126782;
+            margin-bottom: 14px;
+            border-bottom: 2px solid #d8e8ef;
+            padding-bottom: 8px;
+        }
+
+        h3 {
+            color: #16324f;
+            margin: 12px 0;
+        }
+
+        p {
+            margin-bottom: 12px;
+        }
+
+        /* Non-semantic elements */
+        .label {
+            display: inline-block;
+            background: #fff0d5;
+            color: #865400;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            margin-bottom: 12px;
+        }
+
+        .highlight-box {
+            background: #f0f7ff;
+            border-left: 5px solid #168aad;
+            padding: 18px;
+            margin-top: 15px;
+        }
+
+        /* Semantic content */
+        .content-layout {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 25px;
+            align-items: start;
+        }
+
+        figure {
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        figure img {
+            display: block;
+            width: 100%;
+            max-height: 300px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        figcaption {
+            color: #64748b;
+            font-size: 0.9rem;
+            margin-top: 8px;
+        }
+
+        mark {
+            background: #fff0a8;
+            padding: 2px 5px;
+            border-radius: 3px;
+        }
+
+        time {
+            color: #126782;
+            font-weight: bold;
+        }
+
+        blockquote {
+            border-left: 4px solid #168aad;
+            padding: 12px 18px;
+            background: #f0f7ff;
+            margin: 18px 0;
+            font-style: italic;
+        }
+
+        .tag-list {
+            padding-left: 22px;
+        }
+
+        .tag-list li {
+            margin: 6px 0;
+        }
+
+        /* Footer */
+        footer {
+            background: #102a43;
+            color: white;
+            text-align: center;
+            padding: 24px 15px;
+        }
+
+        footer p {
+            margin: 5px 0;
+        }
+
+        footer a {
+            color: #9eeaf9;
+        }
+
+        /* Responsive design */
+        @media (max-width: 700px) {
+            .content-layout {
+                grid-template-columns: 1fr;
+            }
+
+            section,
+            article,
+            aside,
+            .non-semantic-box {
+                padding: 18px;
+            }
+
+            nav a {
+                padding: 10px 12px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- 1. HEADER: Semantic element -->
+    <header id="top">
+        <div class="container">
+            <h1>HTML5 Semantic Elements</h1>
+            <p>Web Development Laboratory | Practical Demonstration</p>
+        </div>
+    </header>
+
+    <!-- NAV: Semantic navigation element -->
+    <nav aria-label="Main navigation">
+        <ul>
+            <li><a href="#non-semantic">Non-Semantic</a></li>
+            <li><a href="#semantic">Semantic Elements</a></li>
+            <li><a href="#article">Article</a></li>
+            <li><a href="#tags">HTML5 Tags</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+
+        <!-- 2. NON-SEMANTIC ELEMENTS -->
+        <section id="non-semantic">
+            <h2>1. Non-Semantic Elements</h2>
+            <p>
+                Non-semantic elements do not describe the meaning of their
+                content. The most common examples are
+                <code>&lt;div&gt;</code> and <code>&lt;span&gt;</code>.
+            </p>
+
+            <div class="non-semantic-box">
+                <span class="label">DIV Example</span>
+
+                <div class="highlight-box">
+                    <h3>This heading is inside a div</h3>
+                    <p>
+                        The div groups related content together.
+                        It has no specific semantic meaning by itself.
+                    </p>
+                </div>
+
+                <p>
+                    HTML is <span style="color: #168aad; font-weight: bold;">
+                    easy to learn</span> when practiced regularly.
+                    The span styles only a small part of the text.
+                </p>
+            </div>
+        </section>
+
+        <!-- 3. SEMANTIC ELEMENTS -->
+        <section id="semantic">
+            <h2>2. Semantic Elements</h2>
+
+            <p>
+                Semantic elements clearly describe the purpose of their
+                content to browsers, developers, and assistive technologies.
+            </p>
+
+            <div class="highlight-box">
+                <h3>Examples of Semantic Elements</h3>
+                <ul class="tag-list">
+                    <li><code>&lt;header&gt;</code> — introductory content</li>
+                    <li><code>&lt;nav&gt;</code> — navigation links</li>
+                    <li><code>&lt;main&gt;</code> — primary page content</li>
+                    <li><code>&lt;section&gt;</code> — a thematic section</li>
+                    <li><code>&lt;article&gt;</code> — independent content</li>
+                    <li><code>&lt;aside&gt;</code> — related supplementary content</li>
+                    <li><code>&lt;footer&gt;</code> — closing information</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- ARTICLE AND ASIDE LAYOUT -->
+        <div class="content-layout">
+
+            <!-- 4. ARTICLE -->
+            <article id="article">
+                <header>
+                    <h2>3. Article: Learning HTML5</h2>
+                    <p>Published on
+                        <time datetime="2026-10-29">October 29, 2026</time>
+                    </p>
+                </header>
+
+                <p>
+                    HTML5 provides semantic elements that make web pages
+                    easier to understand, maintain, and navigate.
+                </p>
+
+                <!-- FIGURE AND FIGCAPTION -->
+                <figure>
+                    <img
+                        src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1000&q=80"
+                        alt="Laptop displaying a web development workspace"
+                        loading="lazy"
+                    >
+                    <figcaption>
+                        Figure 1: A workspace for modern web development.
+                    </figcaption>
+                </figure>
+
+                <h3>Why Use Semantic HTML?</h3>
+                <p>
+                    Semantic HTML improves document structure and supports
+                    accessibility. It also helps search engines understand
+                    the roles of different page sections.
+                </p>
+
+                <p>
+                    Remember to focus on <mark>meaningful HTML structure</mark>
+                    rather than using elements only for their appearance.
+                </p>
+
+                <!-- HGROUP -->
+                <hgroup>
+                    <h3>Web Development Fundamentals</h3>
+                    <p>Building structured and accessible websites.</p>
+                </hgroup>
+
+                <blockquote>
+                    "Great websites begin with clear structure,
+                    meaningful content, and thoughtful design."
+                </blockquote>
+
+                <footer>
+                    <p>Category: Web Development</p>
+                    <p>Reading time: 3 minutes</p>
+                </footer>
+            </article>
+
+            <!-- 5. ASIDE -->
+            <aside>
+                <h2>Quick Reference</h2>
+
+                <h3>Semantic Tags</h3>
+                <ul class="tag-list">
+                    <li>header</li>
+                    <li>nav</li>
+                    <li>main</li>
+                    <li>article</li>
+                    <li>aside</li>
+                    <li>section</li>
+                    <li>footer</li>
+                </ul>
+
+                <div class="highlight-box">
+                    <h3>Did You Know?</h3>
+                    <p>
+                        A <code>div</code> groups content without adding
+                        semantic meaning, while an <code>article</code>
+                        represents independent, self-contained content.
+                    </p>
+                </div>
+
+                <p>
+                    <a href="#top">Back to top ↑</a>
+                </p>
+            </aside>
+
+        </div>
+
+        <!-- 6. ALL REQUESTED HTML5 SEMANTIC TAGS -->
+        <section id="tags">
+            <h2>4. HTML5 Semantic Tags Demonstration</h2>
+
+            <p>
+                This page demonstrates all the requested tags:
+                article, aside, figcaption, figure, footer, header,
+                hgroup, mark, nav, section, and time.
+            </p>
+
+            <h3>Tag Summary</h3>
+
+            <ul class="tag-list">
+                <li><strong>article:</strong> Self-contained article content.</li>
+                <li><strong>aside:</strong> Supplementary information.</li>
+                <li><strong>figcaption:</strong> Caption for a figure.</li>
+                <li><strong>figure:</strong> Self-contained media or illustration.</li>
+                <li><strong>footer:</strong> Closing or author information.</li>
+                <li><strong>header:</strong> Introductory content.</li>
+                <li><strong>hgroup:</strong> Groups a heading with related
+                    secondary heading content.</li>
+                <li><strong>mark:</strong> Highlights relevant text.</li>
+                <li><strong>nav:</strong> Navigation links.</li>
+                <li><strong>section:</strong> Thematically grouped content.</li>
+                <li><strong>time:</strong> Machine-readable date or time.</li>
+            </ul>
+
+            <p>
+                Practical completed on
+                <time datetime="2026-10-29">October 29, 2026</time>.
+            </p>
+        </section>
+
+    </main>
+
+    <!-- 7. FOOTER -->
+    <footer>
+        <p>&copy; 2026 HTML5 Web Development Practical</p>
+        <p>Designed using semantic HTML5 and responsive CSS.</p>
+        <p><a href="#top">Return to Top</a></p>
+    </footer>
+
+</body>
+</html>
